@@ -7,26 +7,25 @@ import { ThemeProvider } from '@mui/material/styles';
 
 
 import { Provider } from 'react-redux'
-import { store } from './app/store'
-
+import store from './store'
 
 import theme from './theme';
-
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import 'virtual:windi.css'
 import './index.css'
+
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from './graphql/client';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <ApolloProvider client={apolloClient}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </ApolloProvider>,
     </Provider>
   </React.StrictMode >,
 )
