@@ -5,14 +5,5 @@
             "dest": "/",
             "status": 200
         }
-    ],
-    "github": {
-        "silent": true
-    },
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
     ]
 }
