@@ -8,14 +8,14 @@ import Layout from './components/common/Layout ';
 function App() {
 
   return (
-    <Layout>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
           <Route path="/" element={<Characters />} />
           <Route path="/character/:id" element={<CharacterDetails />} />
         </Routes>
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </BrowserRouter>
   )
 }
 

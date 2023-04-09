@@ -1,7 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { CircularProgress, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, CircularProgress, Container, Grid, Typography } from '@mui/material';
 
 import type { Character as CharacterType } from '../types/character';
 
@@ -25,25 +25,36 @@ const CharacterDetails: React.FC = () => {
 
   const { character } = data!;
 
-  return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h3">{character.name}</Typography>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <img src={character.image} alt={character.name} />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Typography variant="h6">Status:</Typography>
-        <Typography>{character.status}</Typography>
-        <Typography variant="h6">Species:</Typography>
-        <Typography>{character.species}</Typography>
-        <Typography variant="h6">Gender:</Typography>
-        <Typography>{character.gender}</Typography>
-        <Typography variant="h6">Origin:</Typography>
-        <Typography>{character.origin.name}</Typography>
-      </Grid>
-    </Grid>
+  return (<>
+    <Container className="!flex justify-between items-center h-full">
+      <Box>
+        <Typography gutterBottom variant="h4" component="div">
+          Name: <span>{character.name}</span>
+        </Typography>
+        <div className="flex gap-4">
+          <Typography variant="h6">Status:</Typography>
+          <Typography>{character.status}</Typography>
+        </div>
+        <div className="flex gap-4">
+          <Typography variant="h6">Species:</Typography>
+          <Typography>{character.species}</Typography>
+        </div>
+        <div className="flex gap-4">
+          <Typography variant="h6">Gender:</Typography>
+          <Typography>{character.gender}</Typography>
+        </div>
+        <div className="flex gap-4">
+          <Typography variant="h6">Origin:</Typography>
+          <Typography>{character.origin.name}</Typography>
+        </div>
+      </Box>
+      <img
+        className="rounded-md w-1/2 max-w-600px flex-1"
+        src={character.image}
+        alt={character.name}
+      />
+    </Container>
+  </>
   );
 };
 

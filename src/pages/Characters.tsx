@@ -31,7 +31,7 @@ const Characters = () => {
     const searchParam = params.get('search') ?? '';
     setSearchTerm(searchParam);
 
-    dispatch(fetchCharacters({ page, filter: { name: searchParam } }));
+    dispatch(fetchCharacters({ page: pageParam, filter: { name: searchParam } }));
   }, [dispatch, location.search]);
 
 
