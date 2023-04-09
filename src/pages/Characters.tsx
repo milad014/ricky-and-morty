@@ -59,10 +59,8 @@ const Characters = () => {
         searchParams.set('search', value.trim());
       }
 
-      const pageParam = parseInt(searchParams.get('page') ?? '1', 10);
-      if (pageParam === 1) {
-        searchParams.delete('page');
-      }
+      searchParams.delete('page');
+
 
       navigate(`?${searchParams.toString()}`);
       dispatch(fetchCharacters({ page: 1, filter: { name: value } }));
